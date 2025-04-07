@@ -1,0 +1,49 @@
+.displayContainer {
+  display: flex;
+  width: 98%;
+  /* DO not use another 100vw here just use 100% width so that it takes full width of parent only */
+  height: 269px;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  background: rgba(98, 98, 98, 1);
+  border-radius: 10px;
+  padding: 50px;
+  margin-top: 10px;
+  justify-content: space-around;
+  align-items: center;
+  /* margin: 10px; */
+}
+
+.cardContainer {
+  display: flex;
+  gap: 50px;
+  height: 100%;
+  margin-left: 20px;
+}
+.expenseContainer {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-evenly;
+  width: 80%;
+}
+
+.chartContainer {
+  /* background-color: red; */
+
+  min-width: 400px;
+  height: 250px;
+  /* border: 1px solid red; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+
+  /* justify-content: space-evenly; */
+}
+
+.pie {
+  height: 90%;
+  width: 70%;
+  /* border: 1px solid blue; */
+  display: flex;
+  align-items: center;
+}
