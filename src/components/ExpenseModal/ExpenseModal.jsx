@@ -27,7 +27,7 @@ const ExpenseModal = ({ name, onClose }) => {
             className={styles.inputField}
           />
           <input
-            type="text"
+            type="date"
             placeholder="dd/mm/yyyy"
             className={styles.inputField}
           />
