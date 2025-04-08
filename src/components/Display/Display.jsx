@@ -4,13 +4,12 @@ import ExpenseSection from "../ExpenseSection/ExpenseSection";
 import styles from "./Display.module.css";
 import PieChartDisplay from "../PieChar/PieChartDisplay";
 
-const pieChartData = [
-  { name: "Food", value: 400 },
-  { name: "Entertainment", value: 0 },
-  { name: "Travel", value: 200 },
-];
-
-const Display = () => {
+// const pieChartData = [
+//   { name: "Food", value: 400 },
+//   { name: "Entertainment", value: 0 },
+//   { name: "Travel", value: 200 },
+// ];
+const Display = ({ pieChartData, onAddIncomeClick, onAddExpenseClick }) => {
   return (
     <div className={styles.displayContainer}>
       {/* The main cards here */}
@@ -20,12 +19,18 @@ const Display = () => {
           balance={4500}
           buttonName="+ Add Income"
           color="green"
+          handleClick={onAddIncomeClick}
+
+          // JAB ye card ka button click ho toh ye method trigger kro
         ></Card>
         <Card
           name="Expenses"
           balance={500}
           buttonName="+ Add Expense"
           color="orange"
+          handleClick={onAddExpenseClick}
+
+          // JAB ye card ka button click ho toh ye method trigger kro
         ></Card>
       </div>
       {/* Below is the chart */}

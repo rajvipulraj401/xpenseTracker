@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./Card.module.css";
 
-const Card = ({ name, balance, buttonName, color }) => {
+const Card = ({ name, balance, buttonName, color, handleClick }) => {
   // Conditional inline style based on color prop
   const buttonStyle =
     color === "green"
@@ -37,7 +37,11 @@ const Card = ({ name, balance, buttonName, color }) => {
         <div className={styles.cardTitle}>
           <span>{name}</span>: <span style={balanceColor}>₹{balance}</span>
         </div>
-        <button className={styles.button} style={buttonStyle}>
+        <button
+          className={styles.button}
+          style={buttonStyle}
+          onClick={handleClick}
+        >
           {buttonName}
         </button>
       </div>

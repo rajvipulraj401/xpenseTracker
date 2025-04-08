@@ -5,6 +5,21 @@ import TopExpensesCard from "./components/TopExpensesCard/TopExpensesCard";
 import "./App.css";
 import RecentTransaction from "./components/RecentTransaction/RecentTransaction";
 
+const pieChartData = [
+  { name: "Food", value: 400 },
+  { name: "Entertainment", value: 20 },
+  { name: "Travel", value: 200 },
+];
+
+// All the clicks declared here
+
+const handleAddIncomeClick = () => {
+  // Now on click of this button we want to open the modeal
+};
+const handleAddExpenseClick = () => {
+  // Now on click of this button we want to open the modeal
+};
+
 const App = () => {
   // ---All hooks ---
 
@@ -15,7 +30,11 @@ const App = () => {
       <div className="container">
         <div className="ExpenseTracker">
           <h1>Expense Tracker</h1>
-          <Display></Display>
+          <Display
+            pieChartData={pieChartData}
+            onAddIncomeClick={handleAddIncomeClick}
+            onAddExpenseClick={handleAddExpenseClick}
+          ></Display>
         </div>
 
         {/* Lowe section of  Recent Transactions  and Top Expenses */}
@@ -30,7 +49,7 @@ const App = () => {
           {/* Top Expenses Section */}
           <section className="TopExpenses">
             <h2>Top Expenses</h2>
-            <TopExpensesCard></TopExpensesCard>
+            <TopExpensesCard pieChartData={pieChartData}></TopExpensesCard>
           </section>
         </div>
       </div>
