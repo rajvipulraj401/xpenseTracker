@@ -4,7 +4,7 @@ import styles from "./TopExpensesCard.module.css";
 const TopExpensesCard = ({ pieChartData }) => {
   // So we get array of objects
 
-  console.log(pieChartData);
+  // console.log(pieChartData);
 
   const total = pieChartData.reduce((acc, item) => acc + item.value, 0);
 
