@@ -41,6 +41,7 @@ const Card = ({ name, balance, buttonName, color, handleClick }) => {
           className={styles.button}
           style={buttonStyle}
           onClick={handleClick}
+          type="button"
         >
           {buttonName}
         </button>
