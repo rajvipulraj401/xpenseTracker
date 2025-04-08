@@ -10,6 +10,7 @@ const App = () => {
   const [isIncomeModalOpen, setIsIncomeModalOpen] = useState(false);
   const [isExpenseModalOpen, setIsExpenseModalOpen] = useState(false);
   const [isEditExpenseModalOpen, setIsEditExpenseModalOpen] = useState(false);
+  const [deleteItem, setDeleteItem] = useState(false);
   // ---All hooks ---
 
   // ---All funct below---
@@ -20,16 +21,44 @@ const App = () => {
     { name: "Travel", value: 200 },
   ];
 
+  const transactions = [
+    { title: "Samosa", date: "March 20, 2024", price: 150, category: "Food" },
+    {
+      title: "Movie",
+      date: "March 21, 2024",
+      price: 300,
+      category: "Entertainment",
+    },
+    { title: "Auto", date: "March 22, 2024", price: 50, category: "Travel" },
+    { title: "Bus", date: "March 25, 2024", price: 40, category: "Travel" },
+    { title: "Coffee", date: "March 23, 2024", price: 100, category: "Food" },
+
+    {
+      title: "Netflix",
+      date: "March 24, 2024",
+      price: 500,
+      category: "Entertainment",
+    },
+  ];
+
   // All the clicks declared here
 
+  const handleDelete = () => {
+    setDeleteItem(true);
+  };
+
+  const handleEdit = () => {
+    setIsEditExpenseModalOpen(true);
+  };
+
   const handleAddIncomeClick = () => {
-    console.log("click hua addincome");
+    // console.log("click hua addincome");
     // Now on click of this button we want to open the modal
     setIsIncomeModalOpen(true);
   };
 
   const handleAddExpenseClick = () => {
-    console.log("click hua balance");
+    // console.log("click hua balance");
     // Now on click of this button we want to open the modal
     setIsExpenseModalOpen(true);
   };
@@ -55,7 +84,11 @@ const App = () => {
           <section className="recentTransaction">
             <h2>Recent Transaction</h2>
 
-            <RecentTransaction></RecentTransaction>
+            <RecentTransaction
+              transactions={transactions}
+              handleDelete={handleDelete}
+              handleEdit={handleEdit}
+            ></RecentTransaction>
           </section>
 
           {/* Top Expenses Section */}
@@ -93,6 +126,12 @@ const App = () => {
           <ExpenseModal
             name="Add Expenses"
             onClose={() => setIsExpenseModalOpen(false)}
+          />
+        )}
+        {isEditExpenseModalOpen && (
+          <ExpenseModal
+            name="Edit Expenses"
+            onClose={() => setIsEditExpenseModalOpen(false)}
           />
         )}
 
