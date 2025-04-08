@@ -1,11 +1,11 @@
 import React from "react";
 import styles from "./ExpenseModal.module.css";
 
-const ExpenseModal = ({ onClose }) => {
+const ExpenseModal = ({ name, onClose }) => {
   return (
     <div className={styles.modalOverlay}>
       <div className={styles.expenseModalContent}>
-        <h2>Add Expenses</h2>
+        <h2>{name}</h2>
 
         <div className={styles.formRow}>
           <input

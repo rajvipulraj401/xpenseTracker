@@ -9,6 +9,7 @@ import RecentTransaction from "./components/RecentTransaction/RecentTransaction"
 const App = () => {
   const [isIncomeModalOpen, setIsIncomeModalOpen] = useState(false);
   const [isExpenseModalOpen, setIsExpenseModalOpen] = useState(false);
+  const [isEditExpenseModalOpen, setIsEditExpenseModalOpen] = useState(false);
   // ---All hooks ---
 
   // ---All funct below---
@@ -89,7 +90,10 @@ const App = () => {
 
         {/* Render Expense Modal */}
         {isExpenseModalOpen && (
-          <ExpenseModal onClose={() => setIsExpenseModalOpen(false)} />
+          <ExpenseModal
+            name="Add Expenses"
+            onClose={() => setIsExpenseModalOpen(false)}
+          />
         )}
 
         {/* 👆🏼👆🏼👆🏼👆🏼👆🏼👆🏼👆🏼👆🏼👆🏼 ADDED MODAL Above to render it onscreen 👆🏼👆🏼👆🏼👆🏼👆🏼👆🏼👆🏼*/}
