@@ -254,7 +254,8 @@ const App = () => {
   it to array by parsing it */
 
   const [transactions, setTransactions] = useState(() => {
-    const stored = localStorage.getItem("Transactions");
+    // const stored = localStorage.getItem("Transactions");
+    const stored = localStorage.getItem("expenses");
     return stored ? JSON.parse(stored) : [];
   });
   const [pieChartData, setPieChartData] = useState(() => {
@@ -392,7 +393,7 @@ const App = () => {
       // we update the transactions added in local storage and then returned it
       // localStorage.setItem("Transactions", updatedTransactions);
 
-      localStorage.setItem("Transactions", JSON.stringify(updatedTransactions));
+      localStorage.setItem("expenses", JSON.stringify(updatedTransactions));
       // WE need to do this beause localStorage store in form of string thats why
       // first we need to stringify if to convert it to string and store it
 
