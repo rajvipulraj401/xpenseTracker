@@ -11,12 +11,14 @@ const ExpenseModal = ({ name, onClose, onAddExpense }) => {
           <div className={styles.formRow}>
             <input
               type="text"
+              name="title"
               placeholder="Title"
               required
               className={styles.inputField}
             />
             <input
               type="number"
+              name="price"
               placeholder="Price"
               required
               className={styles.inputField}
@@ -24,7 +26,12 @@ const ExpenseModal = ({ name, onClose, onAddExpense }) => {
           </div>
 
           <div className={styles.formRow}>
-            <select className={styles.inputField} required defaultValue="">
+            <select
+              name="category"
+              className={styles.inputField}
+              required
+              defaultValue=""
+            >
               <option
                 value=""
                 hidden
@@ -38,6 +45,7 @@ const ExpenseModal = ({ name, onClose, onAddExpense }) => {
             </select>
             <input
               type="date"
+              name="date"
               required
               defaultValue=""
               className={styles.inputField}
