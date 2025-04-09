@@ -1,8 +1,8 @@
 import React from "react";
 import Card from "../Card/Card";
-import ExpenseSection from "../ExpenseSection/ExpenseSection";
+
 import styles from "./Display.module.css";
-import PieChartDisplay from "../PieChar/PieChartDisplay";
+import PieChartDisplay from "../PieChart/PieChartDisplay";
 
 // const pieChartData = [
 //   { name: "Food", value: 400 },
@@ -38,20 +38,6 @@ const Display = ({ pieChartData, onAddIncomeClick, onAddExpenseClick }) => {
       <div className={styles.chartContainer}>
         <div className={styles.pie}>
           <PieChartDisplay data={pieChartData} />
-        </div>
-        <div className={styles.expenseContainer}>
-          <ExpenseSection
-            color="rgba(160, 0, 255, 1)"
-            name="Food"
-          ></ExpenseSection>
-          <ExpenseSection
-            color="rgba(255, 147, 4, 1)"
-            name="Entertainment"
-          ></ExpenseSection>
-          <ExpenseSection
-            color=" rgba(253, 224, 6, 1)"
-            name="Travel"
-          ></ExpenseSection>
         </div>
       </div>
     </div>

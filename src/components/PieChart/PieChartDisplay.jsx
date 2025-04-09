@@ -1,5 +1,5 @@
 import React from "react";
-import { PieChart, Pie, Cell, ResponsiveContainer } from "recharts";
+import { PieChart, Pie, Cell, Legend, ResponsiveContainer } from "recharts";
 
 const PieChartDisplay = ({ data }) => {
   // get the data in the form of props :---
@@ -57,6 +57,9 @@ const PieChartDisplay = ({ data }) => {
               />
             ))}
           </Pie>
+          {/* Added The legend component here it will automatically show the below thing from pieChart
+           value */}
+          <Legend />
         </PieChart>
       </ResponsiveContainer>
     </div>

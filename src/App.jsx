@@ -16,9 +16,10 @@ const App = () => {
   // ---All funct below---
 
   const pieChartData = [
-    { name: "Food", value: 400 },
-    { name: "Entertainment", value: 20 },
-    { name: "Travel", value: 200 },
+    { name: "Food", value: 100000 },
+    { name: "Entertainment", value: 20000 },
+    { name: "Travel", value: 20000 },
+    { name: "Travel", value: 40000 },
   ];
 
   const transactions = [
@@ -99,22 +100,6 @@ const App = () => {
         </div>
 
         {/* 👇🏼👇🏼👇🏼👇🏼👇🏼👇🏼👇🏼ADDED MODAL below to render it onscreen 👇🏼👇🏼👇🏼👇🏼👇🏼👇🏼👇🏼👇🏼👇🏼👇🏼👇🏼*/}
-
-        {/* {isIncomeModalOpen && (
-          <Modal
-            title="Add Balance"
-            type="income"
-            onClose={() => setIsIncomeModalOpen(false)}
-          />
-        )}
-
-        {isExpenseModalOpen && (
-          <Modal
-            title="Add Expense"
-            type="expense"
-            onClose={() => setIsExpenseModalOpen(false)}
-          />
-        )} */}
 
         {/* Render Income Modal */}
         {isIncomeModalOpen && (

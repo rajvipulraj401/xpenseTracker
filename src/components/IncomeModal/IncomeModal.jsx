@@ -7,17 +7,22 @@ const IncomeModal = ({ onClose }) => {
       <div className={styles.incomeModalContent}>
         <h2>Add Balance</h2>
 
-        <div className={styles.buttonRow}>
-          <input
-            type="number"
-            placeholder="Income Amount"
-            className={styles.inputField}
-          />
-          <button className={styles.addBtn}>Add Balance</button>
-          <button className={styles.cancelBtn} onClick={onClose}>
-            Cancel
-          </button>
-        </div>
+        <form action="">
+          <div className={styles.buttonRow}>
+            <input
+              type="number"
+              placeholder="Income Amount"
+              required
+              className={styles.inputField}
+            />
+            <button type="submit" className={styles.addBtn}>
+              Add Balance
+            </button>
+            <button className={styles.cancelBtn} onClick={onClose}>
+              Cancel
+            </button>
+          </div>
+        </form>
       </div>
     </div>
   );
