@@ -77,7 +77,7 @@ const COLORS = [
 ];
 
 const TopExpensesCard = ({ pieChartData }) => {
-  const total = pieChartData.reduce((acc, item) => acc + item.value, 0);
+  // const total = pieChartData.reduce((acc, item) => acc + item.value, 0);
 
   return (
     <div className={styles.TopExpensesCard}>
@@ -94,10 +94,14 @@ const TopExpensesCard = ({ pieChartData }) => {
           <XAxis
             type="number"
             hide
-            /* (hide only hides the axisLine(rage no x axiswla)
-              and the tick (bs ek neeche line) TOH neeche wala ka
-             jarurat nahi hai)
-             */
+
+            /*
+              'hide' property se X-axis ki line aur tick (bs ek neeche line cordinate numbering likhne wala yaar)
+              dono chhup jaate hain.
+              Isliye neeche 'axisLine' aur 'tick' set karne ki zarurat nahi padti.
+              (Warna yeh properties axis line aur ticks ko individually control karti.)
+            */
+
             // axisLine={false}
             // tick={false}
           />
@@ -109,6 +113,11 @@ const TopExpensesCard = ({ pieChartData }) => {
             /* The below one is to give line 
              arrey bhai jab cordinate likhte hai toh wo x axis aur y axis pe 
             line khechte hai na whihai ye
+            */
+
+            /*
+              'axisLine={false}' ka matlab hai Y-axis ke along line draw nahi hogi.
+              Agar tumhe coordinate axis jaisi line nahi chahiye toh ise false hi rakho.
             */
             axisLine={false}
           />

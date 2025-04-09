@@ -1,13 +1,13 @@
 import React from "react";
 import styles from "./IncomeModal.module.css";
 
-const IncomeModal = ({ onClose }) => {
+const IncomeModal = ({ onClose, OnAddBalance }) => {
   return (
     <div className={styles.modalOverlay}>
       <div className={styles.incomeModalContent}>
         <h2>Add Balance</h2>
 
-        <form action="">
+        <form action="" onSubmit={OnAddBalance}>
           <div className={styles.buttonRow}>
             <input
               type="number"
@@ -18,7 +18,12 @@ const IncomeModal = ({ onClose }) => {
             <button type="submit" className={styles.addBtn}>
               Add Balance
             </button>
-            <button className={styles.cancelBtn} onClick={onClose}>
+            <button
+              type="button"
+              // Default submit hota hai islea daalo nahi toh ye bhi submit krne lgega
+              className={styles.cancelBtn}
+              onClick={onClose}
+            >
               Cancel
             </button>
           </div>

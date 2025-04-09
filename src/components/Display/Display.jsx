@@ -9,14 +9,20 @@ import PieChartDisplay from "../PieChart/PieChartDisplay";
 //   { name: "Entertainment", value: 0 },
 //   { name: "Travel", value: 200 },
 // ];
-const Display = ({ pieChartData, onAddIncomeClick, onAddExpenseClick }) => {
+const Display = ({
+  pieChartData,
+  balance,
+  expense,
+  onAddIncomeClick,
+  onAddExpenseClick,
+}) => {
   return (
     <div className={styles.displayContainer}>
       {/* The main cards here */}
       <div className={styles.cardContainer}>
         <Card
           name="Wallet Balance"
-          balance={4500}
+          balance={balance}
           buttonName="+ Add Income"
           color="green"
           handleClick={onAddIncomeClick}
@@ -25,7 +31,7 @@ const Display = ({ pieChartData, onAddIncomeClick, onAddExpenseClick }) => {
         ></Card>
         <Card
           name="Expenses"
-          balance={500}
+          balance={expense}
           buttonName="+ Add Expense"
           color="orange"
           handleClick={onAddExpenseClick}

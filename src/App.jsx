@@ -5,12 +5,23 @@ import IncomeModal from "./components/IncomeModal/IncomeModal";
 import ExpenseModal from "./components/ExpenseModal/ExpenseModal";
 import "./App.css";
 import RecentTransaction from "./components/RecentTransaction/RecentTransaction";
+// import { BiAlarm } from "react-icons/bi";
+import { useSnackbar } from "notistack";
 
 const App = () => {
   const [isIncomeModalOpen, setIsIncomeModalOpen] = useState(false);
   const [isExpenseModalOpen, setIsExpenseModalOpen] = useState(false);
   const [isEditExpenseModalOpen, setIsEditExpenseModalOpen] = useState(false);
   const [deleteItem, setDeleteItem] = useState(false);
+
+  const [balance, setBalance] = useState(
+    Number(localStorage.getItem("Balance")) || 5000
+  );
+
+  const [expense, setExpense] = useState(
+    Number(localStorage.getItem("Expense")) || 0
+  );
+  const { enqueueSnackbar } = useSnackbar();
   // ---All hooks ---
 
   // ---All funct below---
@@ -44,6 +55,72 @@ const App = () => {
 
   // All the clicks declared here
 
+  const handleAddBalance = (e) => {
+    e.preventDefault();
+    // console.log(e.target[0].value);
+    const newValue = Number(e.target[0].value);
+    setBalance((prev) => {
+      const updated = prev + newValue;
+      //   localStorage.setItem("Balance", balance);
+      //  The above will not work because state is not updated instantaneously
+      localStorage.setItem("Balance", updated);
+      return updated;
+    });
+
+    enqueueSnackbar("wallet balance Updated", {
+      variant: "success",
+      anchorOrigin: {
+        vertical: "top",
+        horizontal: "center",
+      },
+    });
+
+    // console.log(balance);
+
+    setIsIncomeModalOpen(false);
+  };
+
+  const handleAddExpense = (e) => {
+    // step1 : prevent the default behaviour of form
+
+    e.preventDefault();
+
+    // Step2 :- Now get all the target elements value.
+    const title = e.target[0].value;
+    const price = Number(e.target[1].value);
+    const category = e.target[2].value;
+    const date = e.target[3].value;
+
+    // step 3: -- if price is more handle the error using notistack
+    if (price > balance) {
+      enqueueSnackbar("Price should be less than the wallet balance", {
+        variant: "error",
+        anchorOrigin: {
+          vertical: "top",
+          horizontal: "center",
+        },
+      });
+      return;
+    }
+
+    // Step 4 : -- Else we put the expense value in expense state and  localstorage and update the
+    // balance state and localStorage
+
+    setExpense((prev) => {
+      const updatedExpense = prev + price;
+      localStorage.setItem("Expense", updatedExpense);
+      return updatedExpense;
+    });
+
+    setBalance((prev) => {
+      const updatedBalance = prev - price;
+      localStorage.setItem("Balance", updatedBalance);
+      return updatedBalance;
+    });
+
+    setIsExpenseModalOpen(false);
+  };
+
   const handleDelete = () => {
     setDeleteItem(true);
   };
@@ -76,6 +153,8 @@ const App = () => {
             pieChartData={pieChartData}
             onAddIncomeClick={handleAddIncomeClick}
             onAddExpenseClick={handleAddExpenseClick}
+            balance={balance}
+            expense={expense}
           ></Display>
         </div>
 
@@ -103,7 +182,10 @@ const App = () => {
 
         {/* Render Income Modal */}
         {isIncomeModalOpen && (
-          <IncomeModal onClose={() => setIsIncomeModalOpen(false)} />
+          <IncomeModal
+            onClose={() => setIsIncomeModalOpen(false)}
+            OnAddBalance={handleAddBalance}
+          />
         )}
 
         {/* Render Expense Modal */}
@@ -111,6 +193,7 @@ const App = () => {
           <ExpenseModal
             name="Add Expenses"
             onClose={() => setIsExpenseModalOpen(false)}
+            OnAddExpense={handleAddExpense}
           />
         )}
         {isEditExpenseModalOpen && (
