@@ -467,7 +467,7 @@ const App = () => {
 
         <div className="recentTransactionANDtopExpenses">
           <section className="recentTransaction">
-            <h2>Recent Transaction</h2>
+            <h2>Recent Transactions</h2>
 
             <RecentTransaction
               transactions={transactions}
